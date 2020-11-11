@@ -27,9 +27,14 @@
   </body>
   <script>
     // Add your code here
-
-    let quoteStart = 'Don't judge each day by the harvest you reap ';
-
+    // the error that MDN provided us to solve was to escape the 2nd single quote as below 
+    // let quoteStart = 'Don\'t judge each day by the harvest you reap ';
+    
+    // I avoided that error anyway by using backticks instead, following template literal 
+    let quoteStart = `Don't judge each day by the harvest you reap `;
+    let quoteEnd = ` but by the seeds that you plant.`;
+    let author = `Robert Louis Stevenson`
+    let finalQuote = `${quoteStart} ${quoteEnd} - ${author}`;
     // Don't edit the code below here!
 
     const section = document.querySelector('section');
