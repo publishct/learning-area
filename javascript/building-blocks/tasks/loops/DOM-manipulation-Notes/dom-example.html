@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <script>
+        // Store the element reference in a variable container 
+        const link = document.querySelector('a');
+
+        // Change the text inside the link by updating the value of the Node.textContent property
+        link.textContent = 'Mozilla Developer Network';
+
+        // Update the link so it doesn't take us to the wrong page! 
+        link.href = 'https://developer.mozilla.org';
+
+        // Reference the section to eventually create and place new elements
+        const sect = document.querySelector('section');
+
+        // Create a new paragraph using Document.createElement() and give it some text content
+        const para = document.createElement('p');
+        para.textContent = 'We hope you enjoyed the ride.';
+
+        // Append the new paragraph at the end of the section using Node.appendChild()
+        sect.appendChild(para);
+
+        // Add a text node to finish the sentence in the paragraph. Create the text node using Document.createTextNode()
+        const text = document.createTextNode('— the premier source for web development knowledge.');
+
+        // Grab a reference to the paragraph the link inside, and append the text node
+        const linkPara = document.querySelector('p');
+        linkPara.appendChild(text);
+      </script>
+    </body>
+</html>
