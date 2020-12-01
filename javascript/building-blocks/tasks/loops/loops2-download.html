@@ -26,7 +26,7 @@
 
   </body>
   <script>
-    let name = 'Mustafa';
+    let name = 'Cynthia';
     let i = 0;
     let para = document.createElement('p');
 
@@ -39,9 +39,20 @@
       { name : 'Tina', number : '4312' },
       { name : 'Bert', number : '7780' },
       { name : 'Jada', number : '2282' },
+      { name: 'Cynthia', number: '8008'},
     ]
 
     // Add your code here
+    while ( i < phonebook.length ) {
+      if ( name === phonebook[i].name ) {
+        para.textContent = phonebook[i].name + '\'s number is ' + phonebook[i].number + '.';
+        break;
+      } else {
+        para.textContent = 'Contact does not exist';
+      }
+
+      i++;
+    }
 
     // Don't edit the code below here!
     let section = document.querySelector('section');
