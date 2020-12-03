@@ -7,19 +7,19 @@
 <body>
 
   <script>
-    // x is defined in the global scope
     let x = 1;
 
-    // variables y and z are both defined inside functions 
+    // now when I call a() and b() from the console
+    // I get the y and z values respectively, printed onto the page
     function a() {
       let y = 2;
+      output(y);
     }
-
-    // meaning that when I call output(x); in my browser console I get its value
-    // but when I do the same for z, or y, I get Uncaught ReferenceError: z is not defined
-    // this is a simple example of how function scope works 
-    function b() {
+    // what if I output(x) inside b and call b in the console?  
+    // I get the value of x, x is a global variable and is available inside all my code, everywhere
+     function b() {
       let z = 3;
+      output(x);
     }
 
     function output(value) {
