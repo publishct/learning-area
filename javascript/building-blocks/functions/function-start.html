@@ -9,7 +9,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 200px;
+        width: 242px;
         background: #eee;
       }
 
@@ -17,6 +17,9 @@
         line-height: 1.5;
         padding: 10px 20px;
         color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
       }
 
       .msgBox button {
@@ -35,7 +38,55 @@
     <button>Display message box</button>
 
     <script>
-      
+      const btn = document.querySelector('button');
+      // here we are calling ~some code~ in response to a button being clicked 
+      // in this case we are calling our function name directly!
+      // we do not include the parenthesis after displayMessage because we are not calling it immediately 
+      // we are only calling it after the button has been clicked - this does make sense 
+      // btn.onclick = displayMessage;
+
+      // we need to put it inside an anonymous function so that it isn't in the immediate scope and therefore isn't called immediately if we want to specify parameters inside the parenthesis of the function
+      // this way below, the function displayMessage is only called with the button is clicked
+      btn.onclick = function() {
+        // displayMessage('Woopee this is a different message');
+        // displayMessage('And another one! - DJ Khaled voice');
+        // displayMessage('Your inbox is almost full — delete some mails', 'warning');
+        displayMessage('Cynthia: Hi there, how are you today?','chat');
+      };
+
+      function displayMessage(msgText, msgType) {
+        const html = document.querySelector('html');
+
+        const panel = document.createElement('div');
+        panel.setAttribute('class', 'msgBox');
+        html.appendChild(panel);
+
+        const msg = document.createElement('p');
+        // msg.textContent = 'This is my message box';
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x';
+        panel.appendChild(closeBtn);
+
+        closeBtn.onclick = function() {
+          panel.parentNode.removeChild(panel);
+        }
+
+        if (msgType === 'warning') {
+          msg.style.backgroundImage = 'url(icons/warning.png)';
+          panel.style.backgroundColor = 'red';
+        } else if (msgType === 'chat') {
+          msg.style.backgroundImage = 'url(icons/chat.png)';
+          panel.style.backgroundColor = 'aqua';
+        } else {
+          // this else provides a default state if no msgType parameter is provided, meaning that msgType is an optional parameter
+          msg.style.paddingLeft = '20px';
+        }
+      }
+
+      // displayMessage();
     </script>
   </body>
 </html>
