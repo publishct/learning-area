@@ -31,6 +31,16 @@
 
     // Add your code here
 
+    function random(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function chooseName(arrayName) {
+      return arrayName[random(arrayName.length)];
+    }
+    para.textContent += chooseName(names);
+
+
     // Don't edit the code below here!
 
     const section = document.querySelector('section');
