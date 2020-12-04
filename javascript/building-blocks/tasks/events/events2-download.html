@@ -52,6 +52,59 @@
     drawCircle(x, y, size);
 
     // Add your code here
+    function moveCircle(evt) {
+      switch(evt.code) {
+
+        // Backward
+        case 'KeyS':
+        case 'ArrowDown':
+          if (y < 0) {
+            y = 50;
+          } else if (y > 320) {
+            y = 50;
+          }
+          y -= 2;
+        break;
+        
+        // Forward
+        case 'KeyW':
+        case 'ArrowUp':
+          if (y < 0) {
+              y = 50;
+            } else if (y > 320) {
+              y = 50;
+            }
+          y += 2;
+        break;
+        
+        // Leftward
+        case 'KeyA':
+        case 'ArrowLeft':
+          if (x < 0) {
+            x = 50;
+          } else if (x > 480) {
+            x = 50;
+          }
+          x -= 2;
+        break;
+
+        // Rightward
+        case 'KeyD':
+        case 'ArrowRight':
+          if (x < 0) {
+              x = 50;
+            } else if (x > 480) {
+              x = 50;
+            }
+          x += 2;
+        break;
+
+        evt.preventDefault();
+      };
+      drawCircle(x, y, size);
+    };
+
+    window.addEventListener('keydown', moveCircle);
 
   </script>
 
