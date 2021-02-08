@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a
+            href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What
+            are browser developer tools</a> for more information).</p>
+
+</body>
+
+<script>
+    function Person(first, last, age, pronoun, interests) {
+        this.name = {
+            first: first,
+            last: last
+        };
+        this.age = age;
+        this.pronoun = pronoun;
+        this.interests = interests;
+        this.bio = function () {
+            let string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+
+            if (this.pronoun === '' || this.pronoun === 'none' || this.pronoun === 'n/a') {
+                string += this.name.first + ' likes ';
+            } else if (this.pronoun[0] !== 'He' && this.pronoun[0] !== 'She') {
+                string += this.pronoun[0] + ' like ';
+            } else {
+                string += this.pronoun[0] + ' likes ';
+            };
+
+            if (this.interests.length === 1) {
+                string += this.interests[0] + '.';
+            } else if (this.interests.length === 2) {
+                string += this.interests[0] + ' and ' + this.interests[1] + '.';
+            } else {
+                for (i = 0; i < this.interests.length; i++) {
+                    if (i === this.interests.length - 1) {
+                        string += 'and ' + this.interests[i] + '.';
+                    } else {
+                        string += this.interests[i] + ', ';
+                    }
+                }
+            }
+
+            alert(string);
+        };
+        this.greeting = function () {
+            let greetingString = 'Hi! I\'m ' + this.name.first + '. ' + 'My pronouns are: ';
+            if (this.pronoun === '' || this.pronoun === 'none' || this.pronoun === 'n/a') {
+                greetingString += ' none. Call me ' + this.name.first + '.';
+            } else {
+                greetingString += this.pronoun[0] + ', ' + this.pronoun[1] + ', ' + this.pronoun[2] + '.';
+            }
+            alert(greetingString);
+        };
+    }
+    let person1 = new Person('Bob', 'Smith', 32, ['He', 'Him', 'His'], ['music', 'skiing', 'preying on others emotions']);
+    let person2 = new Person('Cody', 'Lake', 24, ['They', 'Them', 'Theirs'], ['music', 'television', 'lollipops']);
+    let person3 = new Person('Noname', 'Unheard', 25, '', ['sand']);
+    let person4 = new Person('Unpublisht', 'Unhorn', 49, ['Ze', 'Zir', 'Zim'], ['gardening', 'television', 'biking', 'coding', 'going unnoticed']);
+</script>
+
+</html>
